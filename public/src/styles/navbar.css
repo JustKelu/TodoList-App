@@ -1,0 +1,221 @@
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    height: 5em;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar scrolled effect (opzionale - da implementare con JS) */
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Brand */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: 800;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.brand-link:hover {
+    color: #8b66ea;
+    transform: scale(1.05);
+}
+
+.brand-icon {
+    width: 1.5em;
+    margin-right: 0.1rem;
+}
+
+.brand-text {
+    background: linear-gradient(135deg, #311cf6, #441b6c);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+/* Navigation Menu */
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Active link styling (da implementare con useLocation se vuoi) */
+.nav-link.active {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.15);
+}
+
+/* Login Link */
+.login-link {
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(135deg, #311cf6, #441b6c);
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.login-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #5a67d8, #6b46c1);
+}
+
+/* Logout Button */
+.logout-btn {
+    background: linear-gradient(135deg, #FF4B2B, #FF416C);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+}
+
+.logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 75, 43, 0.4);
+    background: linear-gradient(135deg, #e63e28, #e5396c);
+}
+
+.logout-btn:active {
+    transform: translateY(0);
+}
+
+.logout-icon {
+    font-size: 1rem;
+}
+
+/* Mobile Menu Toggle (hamburger) */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 25px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .navbar-menu {
+        gap: 1rem;
+    }
+    
+    .nav-link, .login-link, .logout-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .brand-text {
+        display: none; /* Nascondi testo su mobile, lascia solo icona */
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .navbar-menu {
+        display: none; /* Da implementare menu mobile se vuoi */
+    }
+    
+    /* Versione semplificata per mobile molto piccoli */
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    
+    .brand-link {
+        font-size: 1rem;
+    }
+}
+
+/* Aggiusta il padding-top del main per compensare navbar fixed */
+body:has(.navbar) main {
+    padding-top: 80px;
+}
+
+/* Smooth scroll quando si naviga */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Animazione di caricamento per la navbar */
+.navbar {
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
